@@ -12,7 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import DragNDrop from "./Components/DragNDrop";
+import DragNDrop from "./DragNDrop";
 
 function Copyright() {
   return (
@@ -60,13 +60,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInPage() {
+export default function SignInPage({
+  handleUsernameUpdate,
+  handlePasswordUpdate,
+  handleSubmit,
+  handleForgotPassword,
+  handlePasswordReset,
+  handleRegister,
+}) {
   const classes = useStyles();
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={6}>
+      <Grid item xs={false} sm={4} md={6} maxHeight="100%">
         <DragNDrop />
       </Grid>
 
@@ -89,6 +96,7 @@ export default function SignInPage() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleUsernameUpdate}
             />
             <TextField
               variant="outlined"
@@ -100,6 +108,7 @@ export default function SignInPage() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handlePasswordUpdate}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -111,17 +120,18 @@ export default function SignInPage() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmit}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="#" variant="body2" onClick={handleForgotPassword}>
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#" variant="body2" onClick={handleRegister}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

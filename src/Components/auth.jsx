@@ -52,6 +52,7 @@ class Auth extends React.Component {
     const flowId = getURLParameter("flowId");
     const error = getURLParameter("error");
     const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    console.log(getURLParameter("environmentId"));
 
     if (error) {
       this.setState({
@@ -131,9 +132,6 @@ class Auth extends React.Component {
     return (
       flow && (
         <div className="container">
-          <div className="row">
-            <img className="logo" src={branding.logo} alt="logo" />
-          </div>
           <div className="row routes">
             <Route
               path={PATH.SIGN_ON}

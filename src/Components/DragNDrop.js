@@ -73,7 +73,6 @@ export default function DragNDrop({ ...props }) {
           item
           xs={12}
           style={{
-            minHeight: 0,
             overflow: "hidden",
           }}
         >
@@ -92,13 +91,16 @@ export default function DragNDrop({ ...props }) {
 
   return (
     <Container className={classes.root} disableGutters>
-      <Grid container style={{ height: "100vh", maxHeight: "100vh" }}>
+      <Grid
+        container
+        display="flex"
+        spacing={0}
+        justify="center"
+        alignItems="stretch"
+        style={{ height: "100%", maxHeight: "100%" }}
+      >
         {imgOrText()}
-        <Grid
-          item
-          xs={12}
-          style={{ minHeight: "80vh", maxHeight: "100vh", overflow: "hidden" }}
-        >
+        <Grid item xs={12} style={{ maxHeight: "100%", overflow: "hidden" }}>
           <DndProvider backend={HTML5Backend}>
             <Example img={file} />
           </DndProvider>
