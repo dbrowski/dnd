@@ -115,7 +115,8 @@ export default function SignInPage({
               label="Remember me"
             />
             <Button
-              type="submit"
+              type="button"
+              data-id="user-credentials-submit"
               fullWidth
               variant="contained"
               color="primary"

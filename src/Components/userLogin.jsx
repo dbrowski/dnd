@@ -253,71 +253,12 @@ class UserLogin extends React.Component {
 
           <SignInPage
             handleUsernameUpdate={this.handleUsernameUpdate}
+            handlePasswordUpdate={this.handlePasswordUpdate}
             handleForgotPassword={this.handleForgotPassword}
             handleSubmit={this.handleSubmit}
             handlePasswordReset={this.handlePasswordReset}
             handleRegister={this.handleRegister}
           />
-
-          <div className="login-step-app">
-            <form>
-              <div
-                id="username-form-group"
-                className={
-                  (username.length > 0 ? "input-valid" : "input-invalid") +
-                  " input-field"
-                }
-              >
-                <label>Username</label>
-                <input
-                  className="username-input"
-                  data-id="username-input"
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={username}
-                  onChange={this.handleUsernameUpdate}
-                  placeholder="Username"
-                />
-              </div>
-
-              <div
-                id="password-form-group"
-                className={
-                  (password.length > 0 ? "input-valid" : "input-invalid") +
-                  " input-field"
-                }
-              >
-                <label>Password</label>
-                <input
-                  className="password-input"
-                  data-id="password-input"
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={password}
-                  onChange={this.handlePasswordUpdate}
-                  placeholder="Password"
-                />
-              </div>
-
-              <div className="input-group">
-                <button
-                  className="btn btn-primary user-credentials-submit"
-                  data-id="user-credentials-submit"
-                  type="button"
-                  onClick={this.handleSubmit}
-                  disabled={!username || !password}
-                >
-                  Sign in
-                </button>
-              </div>
-            </form>
-            {forgotPasswordAnchor}
-            {registerUserAnchor}
-            {passwordResetAnchor}
-            {resetFlowAnchor}
-          </div>
         </Container>
       );
     } else {
