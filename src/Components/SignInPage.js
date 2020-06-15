@@ -73,7 +73,7 @@ export default function SignInPage({
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={6} maxHeight="100%">
+      <Grid item xs={false} sm={4} md={6}>
         <DragNDrop />
       </Grid>
 
@@ -91,9 +91,9 @@ export default function SignInPage({
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
+              id="username"
+              label="Username"
+              name="username"
               autoComplete="email"
               autoFocus
               onChange={handleUsernameUpdate}

@@ -43,6 +43,9 @@ class UserLogin extends React.Component {
       errorMessage: "",
     });
 
+    console.log("flow");
+    console.log(flow);
+
     if (flow.isCompleted()) {
       // Redirect to the resume endpoint in case of password recovery or new user registration process completion
       window.location.assign(flow.resumeUrl);
@@ -62,12 +65,17 @@ class UserLogin extends React.Component {
       return;
     }
 
+    console.log("validatePasswordUrl");
+    console.log(validatePasswordUrl);
+
     return authActions
       .signOn(validatePasswordUrl, this.state.username, this.state.password)
       .then((newflow) => {
+        console.log("newflow then");
         this.setState({
           isSubmitting: false,
         });
+        console.log("newflow before promise");
         return Promise.resolve(newflow);
       })
       .catch((err) => {
@@ -250,6 +258,66 @@ class UserLogin extends React.Component {
             handlePasswordReset={this.handlePasswordReset}
             handleRegister={this.handleRegister}
           />
+
+          <div className="login-step-app">
+            <form>
+              <div
+                id="username-form-group"
+                className={
+                  (username.length > 0 ? "input-valid" : "input-invalid") +
+                  " input-field"
+                }
+              >
+                <label>Username</label>
+                <input
+                  className="username-input"
+                  data-id="username-input"
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={username}
+                  onChange={this.handleUsernameUpdate}
+                  placeholder="Username"
+                />
+              </div>
+
+              <div
+                id="password-form-group"
+                className={
+                  (password.length > 0 ? "input-valid" : "input-invalid") +
+                  " input-field"
+                }
+              >
+                <label>Password</label>
+                <input
+                  className="password-input"
+                  data-id="password-input"
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={this.handlePasswordUpdate}
+                  placeholder="Password"
+                />
+              </div>
+
+              <div className="input-group">
+                <button
+                  className="btn btn-primary user-credentials-submit"
+                  data-id="user-credentials-submit"
+                  type="button"
+                  onClick={this.handleSubmit}
+                  disabled={!username || !password}
+                >
+                  Sign in
+                </button>
+              </div>
+            </form>
+            {forgotPasswordAnchor}
+            {registerUserAnchor}
+            {passwordResetAnchor}
+            {resetFlowAnchor}
+          </div>
         </Container>
       );
     } else {
