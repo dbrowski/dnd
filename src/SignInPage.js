@@ -60,14 +60,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function App() {
+export default function SignInPage() {
   const classes = useStyles();
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={6} >
-      <DragNDrop />
+      <Grid item xs={false} sm={4} md={6}>
+        <DragNDrop />
       </Grid>
 
       <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
