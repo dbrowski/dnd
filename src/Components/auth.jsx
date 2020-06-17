@@ -52,7 +52,6 @@ class Auth extends React.Component {
     const flowId = getURLParameter("flowId");
     const error = getURLParameter("error");
     const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-    console.log(getURLParameter("environmentId"));
 
     if (error) {
       this.setState({
@@ -93,8 +92,6 @@ class Auth extends React.Component {
 
     const flow = _.get(authState, "flow", null);
     const message = _.get(authState, "message", null);
-
-    console.log(flow);
 
     if (flow && (flow.isCompleted() || flow.isFailed())) {
       console.log("flow.resumeUrl");

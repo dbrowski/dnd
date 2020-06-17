@@ -13,6 +13,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import DragNDrop from "./DragNDrop";
+import EmailInput from "./InputForm/EmailInput";
+import PasswordInput from "./InputForm/PasswordInput";
 
 function Copyright() {
   return (
@@ -86,7 +88,7 @@ export default function SignInPage({
             Sign in
           </Typography>
           <form className={classes.form} noValidate>
-            <TextField
+            {/* <TextField
               variant="outlined"
               margin="normal"
               required
@@ -97,19 +99,9 @@ export default function SignInPage({
               autoComplete="email"
               autoFocus
               onChange={handleUsernameUpdate}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={handlePasswordUpdate}
-            />
+            /> */}
+            <EmailInput handleUsernameUpdate={handleUsernameUpdate} />
+            <PasswordInput handlePasswordUpdate={handlePasswordUpdate} />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
